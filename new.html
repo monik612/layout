@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: transparent;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar ul li {
+            position: relative;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+        .dropdown::after {
+            content: '\25BC';
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .search-bar {
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 20px;
+            outline: none;
+        }
+        .container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            margin-top: 80px;
+        }
+        .cart-container {
+            max-width: 400px;
+        }
+        .cart-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+        }
+        .cart-item-info {
+            flex: 1;
+        }
+        .cart-item-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .cart-item-info p {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 5px;
+        }
+        .cart-item-info .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+        }
+        .order-summary {
+            max-width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .order-summary h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .apply-promo {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .apply-promo input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .apply-promo button {
+            padding: 8px 15px;
+            border: none;
+            background: black;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">SHOP.CO</div>
+        <ul>
+            <li><a href="#" class="dropdown">Shop</a></li>
+            <li><a href="#">On Sale</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Brands</a></li>
+        </ul>
+        <input type="text" class="search-bar" placeholder="Search...">
+    </nav>
+    <div class="container">
+        <div class="cart-container">
+            <div class="cart-title">YOUR CART</div>
+            <div class="cart-item">
+                <img src="shirt1.jpg" alt="Gradient Graphic T-shirt">
+                <div class="cart-item-info">
+                    <h3>Gradient Graphic T-shirt</h3>
+                    <p>Size: Large</p>
+                    <p>Color: White</p>
+                    <div class="price">$145</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="shirt2.jpg" alt="Checkered Shirt">
+                <div class="cart-item-info">
+                    <h3>Checkered Shirt</h3>
+                    <p>Size: Medium</p>
+                    <p>Color: Red</p>
+                    <div class="price">$180</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="pant.jpg" alt="Skinny Fit Jeans">
+                <div class="cart-item-info">
+                    <h3>Skinny Fit Jeans</h3>
+                    <p>Size: Large</p>
+                    <p>Color: Blue</p>
+                    <div class="price">$240</div>
+                </div>
+            </div>
+        </div>
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-item"><span>Subtotal</span><span>$565</span></div>
+            <div class="summary-item" style="color: red;"><span>Discount (-20%)</span><span>-$113</span></div>
+            <div class="summary-item"><span>Delivery Fee</span><span>$15</span></div>
+            <div class="summary-item total"><span>Total</span><span>$467</span></div>
+            <div class="apply-promo">
+                <input type="text" placeholder="Add promo code">
+                <button>Apply</button>
+            </div>
+            <a href="#" class="checkout-btn">Go to Checkout →</a>
+        </div>
+    </div>
+</body>
+</html>
